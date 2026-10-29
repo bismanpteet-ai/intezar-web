@@ -94,7 +94,7 @@ footer{border-top:1px solid var(--line);padding:2rem 0 3rem;display:flex;flex-wr
 .intro .sk kbd{font:inherit;padding:.1rem .35rem;border:1px solid rgba(255,255,255,.3);border-radius:.3rem;letter-spacing:.05em}.intro .sk i{font-style:normal;color:#ff5c98}
 .intro{transition:background .12s}.intro.w{background:#fff;color:#000}
 .intro:not(.cards)::before{display:none}
-.intro .tt{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;opacity:0;transition:opacity .9s;pointer-events:none;font-family:"Space Mono",ui-monospace,SFMono-Regular,Menlo,monospace;text-align:center}
+.intro .tt{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;opacity:0;transition:opacity .3s;pointer-events:none;font-family:"Space Mono",ui-monospace,SFMono-Regular,Menlo,monospace;text-align:center}
 .intro .tt.on{opacity:1}
 .intro .tt small{font-size:clamp(.8rem,2.4vw,1.1rem);letter-spacing:.5em;margin-right:-.5em}
 .intro .tt b{font-weight:700;font-size:clamp(2.6rem,13vw,7rem);letter-spacing:.14em;margin-right:-.14em;line-height:1;text-shadow:0 0 18px rgba(255,255,255,.55),0 0 60px rgba(255,255,255,.25)}
@@ -281,7 +281,7 @@ var STEP=3200; /* ms each screenshot stays */
    LINE_BLACK : when the "I GOT BLACK" text appears
    LINE_WHITE : when it flips to "I GOT WHITE"
    LINE_CARDS : when the first profile card appears (keep it at least 0.6s after LINE_WHITE) */
-var SONG_START=7,LINE_BLACK=10,LINE_WHITE=11,LINE_CARDS=12.6;
+var SONG_START=7,LINE_BLACK=10.4,LINE_WHITE=11,LINE_CARDS=12.6;
 /* ============================================= */
 var seen=false;try{seen=sessionStorage.getItem("intezar:intro7")==="1"}catch(e){}if(/[?&]intro/.test(location.search))seen=false;
 if(reduced||!SHOTS.length){document.body.classList.add("ready");return}
