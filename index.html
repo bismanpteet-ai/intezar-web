@@ -298,18 +298,18 @@ try{audio.currentTime=SONG_START}catch(e){}
 wantOn=true;var p=audio.play();if(p&&p.then)p.then(function(){on=true;snd.setAttribute("aria-pressed",true);snd.classList.add("on");$("#sndl").textContent="sound on"},wait)}
 document.documentElement.classList.add("lock");document.body.prepend(r);autoStart();
 var T=[];function at(ms,f){T.push(setTimeout(f,ms))}
-var EV=[],t0=null,iv,fin=false;
-function ev(t,f){EV.push([t,f,0])}
-function tick(){var now=(audio&&!audio.paused&&audio.currentTime>0)?audio.currentTime-LAG:SONG_START+(performance.now()-t0)/1000;if(dbg)dbg.textContent="song "+(now+LAG).toFixed(2)+"s";EV.forEach(function(e){if(!e[2]&&now>=e[0]){e[2]=1;e[1]()}})}
-function startSeq(){if(t0!==null||fin)return;hint.classList.remove("on");var off=audio&&!audio.paused&&audio.currentTime>0?Math.max(0,(audio.currentTime-SONG_START)*1000):0;t0=performance.now()-off;iv=setInterval(tick,40);tick()}
-ev(LINE_BLACK,function(){tt.classList.add("on")});
-ev(LINE_WHITE,function(){r.classList.add("w");tb.textContent="WHITE"});
-ev(LINE_CARDS-.6,function(){r.classList.remove("w");tt.classList.remove("on")});
-ev(LINE_CARDS-.4,function(){r.classList.add("cards")});
-ims.forEach(function(im,i){ev(LINE_CARDS+i*STEP/1000,function(){if(i)ims[i-1].classList.replace("in","gone");im.classList.add("in");cnt.textContent=(i+1)+" / "+n;rl.textContent=SHOTS[i].role||"";rl.classList.toggle("on",!!SHOTS[i].role)})});
-ev(LINE_CARDS+n*STEP/1000+.2,done);
+var sqEV=[],sqT0=null,sqIv,sqFin=false;
+function sqAt(t,f){sqEV.push([t,f,0])}
+function sqTick(){var now=(audio&&!audio.paused&&audio.currentTime>0)?audio.currentTime-LAG:SONG_START+(performance.now()-sqT0)/1000;if(dbg)dbg.textContent="song "+(now+LAG).toFixed(2)+"s";sqEV.forEach(function(e){if(!e[2]&&now>=e[0]){e[2]=1;e[1]()}})}
+function startSeq(){if(sqT0!==null||sqFin)return;hint.classList.remove("on");var off=audio&&!audio.paused&&audio.currentTime>0?Math.max(0,(audio.currentTime-SONG_START)*1000):0;sqT0=performance.now()-off;sqIv=setInterval(sqTick,40);sqTick()}
+sqAt(LINE_BLACK,function(){tt.classList.add("on")});
+sqAt(LINE_WHITE,function(){r.classList.add("w");tb.textContent="WHITE"});
+sqAt(LINE_CARDS-.6,function(){r.classList.remove("w");tt.classList.remove("on")});
+sqAt(LINE_CARDS-.4,function(){r.classList.add("cards")});
+ims.forEach(function(im,i){sqAt(LINE_CARDS+i*STEP/1000,function(){if(i)ims[i-1].classList.replace("in","gone");im.classList.add("in");cnt.textContent=(i+1)+" / "+n;rl.textContent=SHOTS[i].role||"";rl.classList.toggle("on",!!SHOTS[i].role)})});
+sqAt(LINE_CARDS+n*STEP/1000+.2,done);
 onPlaying=startSeq;onFail=startSeq;at(700,function(){if(!r.querySelector(".shot"))done()});
-function done(){fin=true;T.forEach(clearTimeout);T=[];clearInterval(iv);r.classList.add("out");try{sessionStorage.setItem("intezar:intro6","1")}catch(e){}
+function done(){sqFin=true;T.forEach(clearTimeout);T=[];clearInterval(sqIv);r.classList.add("out");try{sessionStorage.setItem("intezar:intro6","1")}catch(e){}
 document.documentElement.classList.remove("lock");document.body.classList.add("ready");setTimeout(function(){r.remove()},1300)}
 sk.addEventListener("click",done);
 addEventListener("keydown",function k(e){if(e.key==="Escape"||e.key==="Enter"){removeEventListener("keydown",k);done()}});
